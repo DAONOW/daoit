@@ -1,4 +1,4 @@
-var chain = "polygon";
+var chain = "goerli";
 
 var rpcURLs = {};
 rpcURLs.rinkeby = "eth-rinkeby.alchemyapi.io/v2/n_mDCfTpJ8I959arPP7PwiOptjubLm57";
