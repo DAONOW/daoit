@@ -2,6 +2,7 @@ var chain = "polygon";
 
 var rpcURLs = {};
 rpcURLs.rinkeby = "eth-rinkeby.alchemyapi.io/v2/n_mDCfTpJ8I959arPP7PwiOptjubLm57";
+rpcURLs.goerli = "eth-goerli.alchemyapi.io/v2/n_mDCfTpJ8I959arPP7PwiOptjubLm57";
 rpcURLs.mumbai = "polygon-mumbai.g.alchemy.com/v2/Ptsa6JdQQUtTbRGM1Elvw_ed3cTszLoj";
 rpcURLs.polygon = "polygon-mainnet.g.alchemy.com/v2/Ptsa6JdQQUtTbRGM1Elvw_ed3cTszLoj";
 
@@ -16,6 +17,7 @@ var factories = {};
 factories.rinkeby =     "0x5A75A669EA75575F3D36AFD0b57AbfCbc79EAa75";
 factories.mumbai =      "0x2aa8A9259f98597c924df46EdE9b8239F0E58B11"; // mumbai
 factories.polygon =     "0xAC57C8a11c52cd50f537054BEF3998Ab43C12b06"; // polygon
+factories.goerli =      "0xaf52C0545bEd4acFdEBD6751EB5AD51321fD0401"; // goerli
 var factoryAddress = factories[chain];
 
 function getFactory() {
@@ -111,10 +113,32 @@ function setAddr() {
         addr.fUSDC = "0xbe49ac1EadAc65dccf204D4Df81d650B50122aB2";
         addr.fUSDCx = "0x0F1D7C55A2B133E000eA10EeC03c774e0d6796e8";
     }
+    if ( chain == "goerli" ) {
+        blockExplorer = "https://goerli.etherscan.io/";
+        addr.router = "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D";
+        addr.Resolver = "0x3710AB3fDE2B61736B8BB0CE845D6c61F667a78E";
+        addr.SuperTokenFactory = "0x94f26B4c8AD12B18c12f38E878618f7664bdcCE2";
+        addr.SuperHost = "0x22ff293e14F1EC3A09B137e9e06084AFd63adDF9";
+        addr.cfa = "0xEd6BcbF6907D4feEEe8a8875543249bEa9D308E8";
+        addr.WETH = "0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6";
+        addr.DAI = "0x73967c6a0904aA032C103b4104747E88c566B1A2";
+        addr.USDC = "";
+        addr.ETHx = "0x5943F705aBb6834Cad767e6E4bB258Bc48D9C947";
+        addr.WETHx = addr.ETHx; // "0x3FbcaeaA76d6f7Fe31DaEa1655b97F1436c0a747";
+        addr.USDCx = "";
+        addr.WBTC = "";
+        addr.WBTCx = "";
+        addr.DAIx = "";
+        addr.fDAI = "0x88271d333C72e51516B67f5567c728E702b3eeE8";
+        addr.fDAIx = "0xF2d68898557cCb2Cf4C10c3Ef2B034b2a69DAD00";
+        addr.fUSDC = "0xc94dd466416A7dFE166aB2cF916D3875C049EBB7";
+        addr.fUSDCx = "0x8aE68021f6170E5a766bE613cEA0d75236ECCa9a";
+    }
 }
 setAddr();
 var chainName = {};
 chainName.rinkeby = "Ethereum Testnet Rinkeby";
+chainName.goerli = "Ethereum Testnet Goerli";
 chainName.ethereum = "Ethereum Network";
 chainName.polygon = "Matic(Polygon) Mainnet";
 chainName.mumbai = "Mumbai(Polygon) Testnet";
@@ -125,7 +149,8 @@ chainName.mumbai = "Mumbai(Polygon) Testnet";
 //const host = new web3.eth.Contract(hostABI, addr.SuperHost);
 
 var gas = web3.utils.toHex(new BN('30000000000')); // 30 Gwei;
-var dappChain = 4; // default to Rinkeby
+//var dappChain = 4; // default to Rinkeby
+var dappChain = 5; // default to Goerli
 var userChain;
 var accounts;
 

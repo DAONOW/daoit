@@ -100,7 +100,7 @@ async function main(stf) {
     var c = {};
     var result;
 
-    var v = "V1";
+    var v = "V1.beta5g2";
     const tokenSalt = ethers.utils.id("TOKEN"+v);
     const appSalt = ethers.utils.id("APP"+v);
     const govSalt = ethers.utils.id("GOV"+v);
@@ -142,7 +142,8 @@ async function main(stf) {
       }
     });
 
-    const gasOptions = {"maxPriorityFeePerGas": "45000000000", "maxFeePerGas": "45000000016" };
+    //const gasOptions = {"maxPriorityFeePerGas": "45000000000", "maxFeePerGas": "45000000016" };
+    const gasOptions = null;
 
     result = await c2factory.deploy(tokenJSON.bytecode, tokenSalt, gasOptions);
     console.log(result);
@@ -158,7 +159,7 @@ async function main(stf) {
     await result.wait();
     
     result = await c2factory.deploy(appFactoryJSON.bytecode, factorySalt, gasOptions);
-    //await sleep(25000);
+    await sleep(60000);
     await result.wait();
 
     //const deployedAppFactory = await factoryFactory.createDaoFactory(
@@ -182,7 +183,8 @@ async function main(stf) {
  
  //main("0xd465e36e607d493cd4CC1e83bea275712BECd5E0") // rinkeby
 //main("0x200657E2f123761662567A1744f9ACAe50dF47E6") // mumbai
-main("0x2C90719f25B10Fc5646c82DA3240C76Fa5BcCF34") // polygon
+//main("0x2C90719f25B10Fc5646c82DA3240C76Fa5BcCF34") // polygon
+main("0x94f26B4c8AD12B18c12f38E878618f7664bdcCE2") // goerli
    .then(() => process.exit(0))
    .catch(error => {
      console.error(error);

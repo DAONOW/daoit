@@ -2,7 +2,7 @@ const { expect } = require("chai");
 const { ethers } = require("hardhat");
 const { Framework } = require("@superfluid-finance/sdk-core");
 
-var superAppAddress = "0x3e32a79c906CbA2CEc77d4e77fd77660f2797c21"; // mumbai
+var superAppAddress = "0x240B149b737121f773b8Cd396078dfde862366fD"; // mumbai
 
 require('dotenv').config();
 var BN = web3.utils.BN;
@@ -109,6 +109,7 @@ describe("SuperApp Config", async function(){
 describe("Deposits and Grants", async function(){
 
     it("should deposit 1 WETH", async function(){
+        this.timeout(2400000);
         log("###" + this.test.title);
         const tBalBefore = await underlying.balanceOf(treasuryAddress);
         const daoBalBefore = await daoToken.balanceOf(PUBLIC_KEY);
@@ -124,6 +125,7 @@ describe("Deposits and Grants", async function(){
     });
 
     it("should deposit 100 DAI and swap to WETH and issue daoTokens", async function(){
+        this.timeout(2400000);
         log("###" + this.test.title);
         const daiAddress = "0x001B3B4d0F3714Ca98ba10F6042DaEbF0B1B7b6F"; // mumbai
         const dai = new ethers.Contract(daiAddress, tokenJSON.abi, signer);
@@ -141,6 +143,7 @@ describe("Deposits and Grants", async function(){
     });
 
     it("should deposit 100 erc20 and NOT swap to WETH and NOT issue daoTokens", async function(){
+        this.timeout(2400000);
         const mockAddress = "0x490B8896ff200D32a100A05B7c0507E492938BBb"; // mumbai
         const mock = new ethers.Contract(mockAddress, tokenJSON.abi, signer);
         const tBalBefore = await mock.balanceOf(treasuryAddress);
@@ -238,6 +241,7 @@ describe("Superfluid Streams", function () {
     });
 
     it("should cancel DaoToken flow to user but not outflow", async function(){
+        this.timeout(2400000);
         log("###" + this.test.title);
         sharePrice = await superApp.sharePrice();
         log("sharePrice", sharePrice);
