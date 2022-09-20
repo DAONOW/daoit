@@ -66,7 +66,7 @@ async function main(stf) {
     
     var salt;
 
-    if (false) {
+    if (true) {
 
     const tokenContract = await ethers.getContractFactory("DAOToken");
     const token = await tokenContract.deploy();
